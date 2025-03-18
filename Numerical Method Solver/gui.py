@@ -49,7 +49,7 @@ main_frame = Frame(root, bg="#1E1E1E")
 main_frame.pack(pady=10)
 
 def open_help_window():
-    url = "https://github.com/Adit-Mugdha-das/Numerical-Methods-Solver/edit/main/README.md"  # Replace with your actual URL
+    url = "https://github.com/Adit-Mugdha-das/Numerical-Methods-Solver/README.md"  # Replace with your actual URL
     webbrowser.open(url)  # Opens in the default web browser
 
 
