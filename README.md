@@ -17,6 +17,12 @@ This project implements various Numerical Methods to solve mathematical problems
 3. **Solution of Differential Equations**
     * [Runge-Kutta method](README.md#runge-kutta-method)
 4. **[Matrix Inversion](README.md#matrix-inversion)**
+5. **Interpolation, Integration, and Differentiation**
+    * [Newton Forward Interpolation](README.md#newton-forward-interpolation)
+    * [Newton Backward Interpolation](README.md#newton-backward-interpolation)
+    * [Simpson's 1/3 Rule](README.md#simpsons-13-rule)
+    * [Simpson's 3/8 Rule](README.md#simpsons-38-rule)
+    * [Second Order Derivative](README.md#second-order-derivative)
 
 ## Jacobi Iterative Method
 1. Arrange the given system of linear equations in diagonally dominant form.
@@ -307,3 +313,103 @@ The program computes  A<sup>-1</sup> and displays it.
 
 # The Visual Representation of the Matrix is:
 ![alt text](res/Inverse.png)
+
+
+## Newton Forward Interpolation
+Newton's Forward Interpolation formula is used to estimate the value of a function at a given point using forward differences. This method is best suited when the values are tabulated at equal intervals.
+
+### Formula:
+```
+f(x) = f(x_0) + p Δf(x_0) + (p(p-1)/2!) Δ²f(x_0) + (p(p-1)(p-2)/3!) Δ³f(x_0) + ...
+```
+Where:
+- `p = (x - x_0) / h`, `h` is the difference between consecutive x-values.
+- `Δf(x_0)`, `Δ²f(x_0)` are forward differences.
+
+### Pseudocode:
+```
+1. Input n, x values, y values, and the interpolation point x.
+2. Compute forward differences table.
+3. Compute p = (x - x0) / h.
+4. Compute f(x) using Newton's Forward formula.
+5. Output interpolated value.
+```
+
+## Newton Backward Interpolation
+Newton's Backward Interpolation is used when the function values are given at equal intervals, but we want to estimate a value near the end of the table.
+
+### Formula:
+```
+f(x) = f(x_n) + p ∇f(x_n) + (p(p+1)/2!) ∇²f(x_n) + (p(p+1)(p+2)/3!) ∇³f(x_n) + ...
+```
+Where:
+- `p = (x - x_n) / h`, `h` is the interval size.
+- `∇f(x_n)`, `∇²f(x_n)` are backward differences.
+
+### Pseudocode:
+```
+1. Input n, x values, y values, and the interpolation point x.
+2. Compute backward differences table.
+3. Compute p = (x - xn) / h.
+4. Compute f(x) using Newton's Backward formula.
+5. Output interpolated value.
+```
+
+## Simpson's 1/3 Rule
+Simpson's 1/3 Rule is a numerical integration technique that approximates the integral of a function using parabolic segments.
+
+### Formula:
+```
+∫ f(x) dx ≈ (h/3) [ f(x_0) + 4 Σ f(x_i) (i=1,3,5...) + 2 Σ f(x_i) (i=2,4,6...) + f(x_n) ]
+```
+Where:
+- `h = (b - a) / n`, and `n` must be even.
+
+### Pseudocode:
+```
+1. Input n, a, b, function f(x).
+2. Compute h = (b - a) / n.
+3. Apply Simpson's 1/3 Rule formula.
+4. Output the integral value.
+```
+
+## Simpson's 3/8 Rule
+Simpson's 3/8 Rule is another numerical integration technique, which is useful when the number of intervals is a multiple of three.
+
+### Formula:
+```
+∫ f(x) dx ≈ (3h/8) [ f(x_0) + 3 Σ f(x_i) (i=1,2,4,5,7...) + 2 Σ f(x_i) (i=3,6,9...) + f(x_n) ]
+```
+Where:
+- `h = (b - a) / n`, and `n` must be a multiple of 3.
+
+### Pseudocode:
+```
+1. Input n, a, b, function f(x).
+2. Compute h = (b - a) / n.
+3. Apply Simpson's 3/8 Rule formula.
+4. Output the integral value.
+```
+
+## Second Order Derivative
+The second-order derivative gives information about the concavity of a function and helps in finding inflection points.
+
+### Formula:
+```
+f''(x) ≈ (f(x+h) - 2f(x) + f(x-h)) / h²
+```
+Where:
+- `h` is the step size between consecutive points.
+
+### Pseudocode:
+```
+1. Input x values, y values.
+2. Compute central difference approximation.
+3. Output second derivative values.
+```
+
+---
+
+This project integrates all these numerical methods into an interactive GUI-based tool to facilitate better understanding and application of these techniques.
+```
+
